@@ -1,3 +1,4 @@
+const tasks = require("./routers/taskRouter");
 const express = require ('express');
 const cors = require('cors');
 const mongoose = require('mongoose')
@@ -18,6 +19,7 @@ connection.once('open', ()=> {
     console.log("Mongo is connected")
 })
 
+app.use("/api/tasks", tasks);
 app.listen(port, ()=> {
     console.log(`Server is running on port number: ${port}`);
 });
