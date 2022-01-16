@@ -1,10 +1,8 @@
-import { Router } from "express";
-
 const Task = require("../models/taskModel")
 const express = require('express')
-const taskRouter = express.Router()
+const router = express.Router()
 
-taskRouter.post("/", async(req,res)=> {
+router.post("/", async(req,res)=> {
     try{
         const task = await new Task(req.body).save();
         res.send(task);
@@ -13,7 +11,7 @@ taskRouter.post("/", async(req,res)=> {
     }
 });
 
-taskRouter.get("/", async(req, res)=>{
+router.get("/:id", async(req, res)=>{
     try{
         const tasks = await Task.find();
         res.send(tasks);
@@ -23,7 +21,7 @@ taskRouter.get("/", async(req, res)=>{
     }
 });
 
-taskRouter.put("/:id", async(req, res)=>{
+router.put("/:id", async(req, res)=>{
     try{
         const task = await Task.findOneAndUpdate(
             { _id:req.params.id },
@@ -35,7 +33,7 @@ taskRouter.put("/:id", async(req, res)=>{
     }
 });
 
-taskRouter.delete("/id", async (req,res)=>{
+router.delete("/id", async (req,res)=>{
     try{
         const task = await Task.findByIdAndDelete(req.params.id);
         res.send(task);
@@ -44,4 +42,4 @@ taskRouter.delete("/id", async (req,res)=>{
     }
 });
 
-module.exports = taskRouter;
+module.exports = router;
