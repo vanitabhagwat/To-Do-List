@@ -14,5 +14,6 @@ export function updateTask (id, task) {
 }
 
 export function deleteTask (id){
-    return axios.delete(apiUrl + "/", + id)
+    console.log(id)
+    return axios.delete(apiUrl + "/" + id)
 }
