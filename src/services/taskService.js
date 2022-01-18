@@ -1,5 +1,7 @@
 import axios from 'axios';
-const apiUrl = "https://jovial-einstein-b02192.netlify.app/";
+const apiUrl = "https://jovial-einstein-b02192.netlify.app/api/tasks";
+//const apiUrl = "http://localhost:8080/api/tasks";
+
 
 export function getTasks(){
     return axios.get(apiUrl)
